@@ -1,0 +1,181 @@
+/* ====================================================================
+   TUGAS RUTIN 3 — KATALOG PRODUK RESPONSIF
+   File ini melengkapi Bootstrap dengan gaya kustom (tipografi clamp(),
+   kartu produk, hero, footer). Lihat komentar REQUIREMENT untuk peta
+   ketentuan tugas.
+   ==================================================================== */
+
+:root {
+  --brand-primary: #2f5cff;
+  --brand-ink: #1c2430;
+  --brand-muted: #6b7686;
+  --brand-surface: #f6f7fb;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--brand-ink);
+}
+
+h1,
+h2,
+h3,
+.navbar-brand {
+  font-family: var(--font-heading);
+}
+
+/* ==================== HERO ==================== */
+.hero {
+  background: linear-gradient(180deg, var(--brand-surface), #ffffff);
+  padding: 56px 0 48px;
+}
+
+/* REQUIREMENT: clamp() untuk tipografi (min, preferred, max) */
+.hero__title {
+  font-size: clamp(1.75rem, 4vw + 1rem, 3rem);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.hero__subtitle {
+  font-size: clamp(0.95rem, 1vw + 0.7rem, 1.15rem);
+  color: var(--brand-muted);
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+
+/* ==================== PRODUCT CARD ==================== */
+.product-card {
+  border: 1px solid rgba(28, 36, 48, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -18px rgba(28, 36, 48, 0.35) !important;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-weight: 500;
+}
+
+/* REQUIREMENT: responsive image — mengisi lebar kartu, rasio terjaga */
+.product-card__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.product-card__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.product-card__desc {
+  font-size: 0.875rem;
+  color: var(--brand-muted);
+  margin-bottom: 14px;
+}
+
+/* REQUIREMENT: clamp() juga dipakai pada harga produk */
+.product-card__price {
+  font-size: clamp(1.05rem, 0.9vw + 0.85rem, 1.3rem);
+  font-weight: 700;
+  color: var(--brand-primary);
+  margin-bottom: 10px;
+}
+
+/* ==================== FOOTER ==================== */
+.site-footer {
+  background: var(--brand-ink);
+  color: #cfd6e4;
+  margin-top: 40px;
+}
+
+.footer__brand {
+  color: #ffffff;
+  font-size: clamp(1.2rem, 1vw + 1rem, 1.5rem);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer__text {
+  color: #9aa4b8;
+  font-size: 0.9rem;
+  max-width: 360px;
+}
+
+.footer__heading {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+.footer__list a {
+  color: #cfd6e4;
+  text-decoration: none;
+}
+.footer__list a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer__divider {
+  border-color: rgba(255, 255, 255, 0.12);
+  margin: 24px 0 16px;
+}
+
+.footer__copy {
+  color: #7c869c;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* ====================================================================
+   REQUIREMENT: minimal 3 breakpoint (mobile-first, pakai min-width).
+   Bootstrap sendiri sudah menyediakan sm/md/lg/xl/xxl yang dipakai di
+   class grid (.row-cols-sm-2, .row-cols-lg-3, .row-cols-xl-4) dan pada
+   navbar (.navbar-expand-lg). Berikut tambahan custom breakpoint untuk
+   menyesuaikan padding hero di beberapa ukuran layar.
+   ==================================================================== */
+
+/* Breakpoint 1 (>= 576px, setara sm Bootstrap): tablet kecil / mobile besar */
+@media (min-width: 576px) {
+  .hero {
+    padding: 64px 0 56px;
+  }
+}
+
+/* Breakpoint 2 (>= 992px, setara lg Bootstrap): tablet besar / laptop kecil */
+@media (min-width: 992px) {
+  .hero {
+    padding: 84px 0 72px;
+  }
+}
+
+/* Breakpoint 3 (>= 1200px, setara xl Bootstrap): desktop */
+@media (min-width: 1200px) {
+  .hero {
+    padding: 100px 0 88px;
+  }
+}
